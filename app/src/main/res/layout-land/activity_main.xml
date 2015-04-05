@@ -1,68 +1,69 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/AppBaseTheme"
+    style="@style/CRMDemoStyleLand"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:padding="@dimen/abc_control_padding_material">
 
     <LinearLayout
-        style="@style/CRMDemoStyle.LinearLayout"
-        android:layout_gravity="top"
+        style="@style/CRMDemoStyleLand.LinearLayout"
+        android:layout_gravity="left"
         >
 
         <Button
             android:id="@+id/btnPartner"
-            style="@style/CRMDemoStyle.MainActivityButton"
-            android:layout_gravity="left"
+            style="@style/CRMDemoStyleLand.MainActivityButton"
+            android:layout_gravity="top"
             android:layout_weight="1"
             android:onClick="onClick"
             android:text="@string/btncontactCaption" />
 
         <Button
             android:id="@+id/buttonCalendar"
-            style="@style/CRMDemoStyle.MainActivityButton"
-            android:layout_gravity="right"
+            style="@style/CRMDemoStyleLand.MainActivityButton"
+            android:layout_gravity="bottom"
             android:layout_weight="1"
             android:text="@string/btncalCaption" />
 
     </LinearLayout>
 
     <LinearLayout
-        style="@style/CRMDemoStyle.LinearLayout"
+        style="@style/CRMDemoStyleLand.LinearLayout"
         android:layout_gravity="center"
         >
 
         <Button
             android:id="@+id/btnNewMemo"
-            style="@style/CRMDemoStyle.MainActivityButton"
-            android:layout_gravity="left"
+            style="@style/CRMDemoStyleLand.MainActivityButton"
+            android:layout_gravity="top"
             android:layout_weight="1"
             android:text="@string/btnnewmemoCaption" />
 
         <Button
             android:id="@+id/btnNewTask"
-            style="@style/CRMDemoStyle.MainActivityButton"
-            android:layout_gravity="right"
+            style="@style/CRMDemoStyleLand.MainActivityButton"
+            android:layout_gravity="bottom"
             android:layout_weight="1"
             android:text="@string/btnnewtaskCaption" />
 
     </LinearLayout>
 
     <LinearLayout
-        style="@style/CRMDemoStyle.LinearLayout"
-        android:layout_gravity="bottom">
+        style="@style/CRMDemoStyleLand.LinearLayout"
+        android:layout_gravity="right"
+        >
 
         <Button
             android:id="@+id/btnDailyTasks"
-            style="@style/CRMDemoStyle.MainActivityButton"
-            android:layout_gravity="left"
+            style="@style/CRMDemoStyleLand.MainActivityButton"
+            android:layout_gravity="top"
             android:layout_weight="1"
             android:text="@string/btndailytaskCaption" />
 
         <Button
             android:id="@+id/btnNavigation"
-            style="@style/CRMDemoStyle.MainActivityButton"
-            android:layout_gravity="right"
+            style="@style/CRMDemoStyleLand.MainActivityButton"
+            android:layout_gravity="bottom"
             android:layout_weight="1"
             android:text="@string/btnnaviCaption" />
 

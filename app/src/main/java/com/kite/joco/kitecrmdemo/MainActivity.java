@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -16,6 +18,19 @@ public class MainActivity extends ActionBarActivity {
         CrmViewPagerAdapter adapter = new CrmViewPagerAdapter(getSupportFragmentManager());
         pager.setAdapter(adapter);*/
     }
+
+    public void onClick(View v){
+        switch (v.getId()){
+            case (R.id.btnPartner):
+                Toast.makeText(this," btnPartner ID: " + R.id.btnPartner,Toast.LENGTH_LONG).show();
+                    break;
+
+            default:
+                Toast.makeText(this,"A kapott id"+  v.getId(),Toast.LENGTH_LONG).show();
+        }
+
+    }
+
 
 
     @Override
