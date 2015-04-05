@@ -1,8 +1,7 @@
 package com.kite.joco.kitecrmdemo;
 
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -13,9 +12,9 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ViewPager pager = (ViewPager) findViewById(R.id.viewpager);
+        /*ViewPager pager = (ViewPager) findViewById(R.id.viewpager);
         CrmViewPagerAdapter adapter = new CrmViewPagerAdapter(getSupportFragmentManager());
-        pager.setAdapter(adapter);
+        pager.setAdapter(adapter);*/
     }
 
 
