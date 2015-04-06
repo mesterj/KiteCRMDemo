@@ -1,5 +1,6 @@
 package com.kite.joco.kitecrmdemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -22,7 +23,8 @@ public class MainActivity extends ActionBarActivity {
     public void onClick(View v){
         switch (v.getId()){
             case (R.id.btnPartner):
-                Toast.makeText(this," btnPartner ID: " + R.id.btnPartner,Toast.LENGTH_LONG).show();
+                Intent newContactIntent = new Intent(this,NewContactActivity.class);
+                startActivity(newContactIntent);
                     break;
 
             default:
