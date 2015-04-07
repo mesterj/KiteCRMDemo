@@ -14,8 +14,9 @@ public class NewContactActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_contact);
-        if (savedInstanceState != null){
-            callernumber = savedInstanceState.getString("Number");
+
+        if (getIntent().getExtras() != null){
+            callernumber = getIntent().getExtras().getString("Number");
             TextView tvCallerNumber = (TextView) findViewById(R.id.tvHello);
             tvCallerNumber.setText("A hívó száma ez volt: " + callernumber);
         }
