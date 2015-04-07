@@ -7,6 +7,18 @@
     tools:context="com.kite.joco.kitecrmdemo.NewContactActivity">
 
     <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:id="@+id/tvHello"/>
+    <Button
+        android:id="@+id/btnDel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="deleteNumber"
+        android:layout_below="@+id/tvHello"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="87dp"
+        android:layout_marginEnd="87dp"
+        android:text="Töröld az előző számot"/>
 
 </RelativeLayout>
