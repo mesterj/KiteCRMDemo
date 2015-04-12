@@ -24,7 +24,7 @@ public class Contacts extends ActionBarActivity {
         rvContacts = (RecyclerView) findViewById(R.id.rcvContacts);
         contactsLayoutManager = new LinearLayoutManager(this);
         rvContacts.setLayoutManager(contactsLayoutManager);
-        contactAdapter = new ContactRecicleAdapter(Partner.listAll(Partner.class));
+        contactAdapter = new ContactRecycleAdapter(Partner.listAll(Partner.class));
         rvContacts.setAdapter(contactAdapter);
     }
     // List<Book> books = Book.listAll(Book.class);

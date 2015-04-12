@@ -13,17 +13,17 @@ import java.util.List;
 /**
  * Created by Joco on 2015.04.12..
  */
-public class ContactRecicleAdapter extends RecyclerView.Adapter<ContactRecicleAdapter.ContactViewHolder>  {
+public class ContactRecycleAdapter extends RecyclerView.Adapter<ContactRecycleAdapter.ContactViewHolder>  {
 
     List<Partner> mDataset;
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public ContactRecicleAdapter(List<Partner> myDataset) {
+    public ContactRecycleAdapter(List<Partner> myDataset) {
         mDataset = myDataset;
     }
 
     @Override
-    public ContactRecicleAdapter.ContactViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ContactRecycleAdapter.ContactViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View contactLayoutView;
         contactLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.contact_main,null);
 
@@ -37,13 +37,17 @@ public class ContactRecicleAdapter extends RecyclerView.Adapter<ContactRecicleAd
         holder.tvId.setText(mDataset.get(position).getId().toString());
         holder.tvNev.setText(mDataset.get(position).getKapcsolatnev());
         holder.tvPhoneNumber.setText(mDataset.get(position).getMaganMobilTelefonszam());
+
     }
+
 
 
     @Override
     public int getItemCount() {
         return mDataset.size();
     }
+
+
 
     // inner class to hold a reference to each item of RecyclerView
     public static class ContactViewHolder extends RecyclerView.ViewHolder {
@@ -57,6 +61,7 @@ public class ContactRecicleAdapter extends RecyclerView.Adapter<ContactRecicleAd
             tvId = (TextView) itemLayoutView.findViewById(R.id.tvId);
             tvNev = (TextView) itemLayoutView.findViewById(R.id.tvNev);
             tvPhoneNumber = (TextView) itemLayoutView.findViewById(R.id.tvNumber);
+            itemLayoutView.setClickable(true);
 
         }
     }
