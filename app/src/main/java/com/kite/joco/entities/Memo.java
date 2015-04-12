@@ -1,4 +1,4 @@
-package com.kite.joco.entites;
+package com.kite.joco.entities;
 
 import com.orm.SugarRecord;
 

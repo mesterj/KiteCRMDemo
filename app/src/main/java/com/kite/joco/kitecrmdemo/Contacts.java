@@ -1,19 +1,33 @@
 package com.kite.joco.kitecrmdemo;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.kite.joco.entities.Partner;
+
 
 public class Contacts extends ActionBarActivity {
+
+    private RecyclerView rvContacts;
+    private RecyclerView.LayoutManager contactsLayoutManager;
+    private RecyclerView.Adapter contactAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
+        rvContacts = (RecyclerView) findViewById(R.id.rcvContacts);
+        contactsLayoutManager = new LinearLayoutManager(this);
+        rvContacts.setLayoutManager(contactsLayoutManager);
+        contactAdapter = new ContactRecicleAdapter(Partner.listAll(Partner.class));
+        rvContacts.setAdapter(contactAdapter);
     }
+    // List<Book> books = Book.listAll(Book.class);
 
 
     @Override

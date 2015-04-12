@@ -12,17 +12,13 @@
         android:label="@string/app_name"
         android:theme="@style/CRMDemoStyle" >
         <meta-data
-            android:name="DATABASE"
-            android:value="crm.db" />
+            android:name="DATABASE" android:value="crm.db" />
         <meta-data
-            android:name="VERSION"
-            android:value="1" />
+            android:name="VERSION" android:value="2" />
         <meta-data
-            android:name="QUERY_LOG"
-            android:value="true" />
+            android:name="QUERY_LOG" android:value="true" />
         <meta-data
-            android:name="DOMAIN_PACKAGE_NAME"
-            android:value="com.kite.joco.entiies" />
+            android:name="DOMAIN_PACKAGE_NAME" android:value="com.kite.joco.entities"/>
 
         <activity
             android:name=".MainActivity"

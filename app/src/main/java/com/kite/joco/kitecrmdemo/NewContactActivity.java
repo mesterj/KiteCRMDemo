@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Switch;
 
-import com.kite.joco.entites.Partner;
+import com.kite.joco.entities.Partner;
 
 
 public class NewContactActivity extends ActionBarActivity {
