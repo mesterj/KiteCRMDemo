@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.FileOutputStream;
@@ -66,7 +65,7 @@ public class CallEndReceiver extends BroadcastReceiver {
             Log.i(TAG, "CALL_STARTED");
             Log.i(TAG, stateval);
             Log.i(TAG + " incoming number : ", bundle.getString("incoming_number"));
-            Toast.makeText(context, " A hívó száma: " + bundle.getString("incoming_number"), Toast.LENGTH_LONG).show();
+            //Toast.makeText(context, " A hívó száma: " + bundle.getString("incoming_number"), Toast.LENGTH_LONG).show();
             FileOutputStream outputStream;
             try {
                 outputStream = context.openFileOutput(filename, Context.MODE_PRIVATE);

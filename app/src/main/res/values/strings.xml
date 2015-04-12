@@ -6,11 +6,13 @@
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_new_contact">NewContactActivity</string>
+    <string name="title_activity_new_contact">Új kapcsolat</string>
     <string name="btncontactCaption">Partnerek</string>
     <string name="btncalCaption">Naptár</string>
     <string name="btnnewmemoCaption">Memó</string>
     <string name="btnnewtaskCaption">Új feladat</string>
     <string name="btndailytaskCaption">Napi feladatok</string>
     <string name="btnnaviCaption">Navigáció</string>
+    <string name="title_activity_contacts">Kapcsolatok</string>
+    <string name="new_contact_menu_text">Új kapcsolat</string>
 </resources>

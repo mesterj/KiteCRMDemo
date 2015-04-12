@@ -1,44 +1,25 @@
 package com.kite.joco.kitecrmdemo;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 
-public class MainActivity extends ActionBarActivity {
+public class Contacts extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        /*ViewPager pager = (ViewPager) findViewById(R.id.viewpager);
-        CrmViewPagerAdapter adapter = new CrmViewPagerAdapter(getSupportFragmentManager());
-        pager.setAdapter(adapter);*/
+        setContentView(R.layout.activity_contacts);
     }
-
-    public void onClick(View v){
-        switch (v.getId()){
-            case (R.id.btnPartner):
-                Intent ContactsIntent = new Intent(this,Contacts.class);
-                startActivity(ContactsIntent);
-                    break;
-
-            default:
-                Toast.makeText(this,"A kapott id"+  v.getId(),Toast.LENGTH_LONG).show();
-        }
-
-    }
-
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_contacts, menu);
         return true;
     }
 
@@ -51,6 +32,8 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent newContactIntent = new Intent(this,NewContactActivity.class);
+            startActivity(newContactIntent);
             return true;
         }
 
