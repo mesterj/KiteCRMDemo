@@ -3,6 +3,7 @@ package com.kite.joco.kitecrmdemo;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
@@ -29,6 +30,10 @@ public class CallEndReceiver extends BroadcastReceiver {
 
         Set<String> keys = bundle.keySet();
         final String TAG = "KITECRMDEMO";
+        final String sharedprefile = "CALLLOGPREF";
+
+        SharedPreferences callinglogpref = context.getSharedPreferences(sharedprefile,Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = callinglogpref.edit();
 
         /*
         The value of incoming_number key in the bundle is the called number, maybe passing for content of the new memo.
@@ -66,6 +71,12 @@ public class CallEndReceiver extends BroadcastReceiver {
             Log.i(TAG, stateval);
             Log.i(TAG + " incoming number : ", bundle.getString("incoming_number"));
             //Toast.makeText(context, " A hívó száma: " + bundle.getString("incoming_number"), Toast.LENGTH_LONG).show();
+
+            //SHaredPref rész
+            editor.putString("CALLER_NUMBER",bundle.getString("incoming_number"));
+            editor.commit();
+
+            // Filés rész
             FileOutputStream outputStream;
             try {
                 outputStream = context.openFileOutput(filename, Context.MODE_PRIVATE);
