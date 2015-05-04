@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kite.joco.entities.Partner;
 
@@ -38,6 +39,7 @@ public class ContactRecycleAdapter extends RecyclerView.Adapter<ContactRecycleAd
         holder.tvNev.setText(mDataset.get(position).getKapcsolatnev());
         holder.tvPhoneNumber.setText(mDataset.get(position).getMaganMobilTelefonszam());
 
+
     }
 
 
@@ -62,12 +64,18 @@ public class ContactRecycleAdapter extends RecyclerView.Adapter<ContactRecycleAd
             tvNev = (TextView) itemLayoutView.findViewById(R.id.tvNev);
             tvPhoneNumber = (TextView) itemLayoutView.findViewById(R.id.tvNumber);
             itemLayoutView.setClickable(true);
+            tvId.setOnClickListener(this);
+            tvNev.setOnClickListener(this);
 
         }
 
         @Override
         public void onClick(View v) {
+            long pos = getAdapterPosition();
+            Partner partneradat = Partner.findById(Partner.class,pos);
+            String telszam = partneradat.getCegMobilTelefonszam();
 
+            Toast.makeText(v.getContext(),telszam,Toast.LENGTH_SHORT).show();
         }
     }
 
