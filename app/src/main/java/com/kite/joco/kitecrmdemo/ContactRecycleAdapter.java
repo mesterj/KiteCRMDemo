@@ -50,7 +50,7 @@ public class ContactRecycleAdapter extends RecyclerView.Adapter<ContactRecycleAd
 
 
     // inner class to hold a reference to each item of RecyclerView
-    public static class ContactViewHolder extends RecyclerView.ViewHolder {
+    public static class ContactViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView tvId;
         public TextView tvNev;
@@ -62,6 +62,11 @@ public class ContactRecycleAdapter extends RecyclerView.Adapter<ContactRecycleAd
             tvNev = (TextView) itemLayoutView.findViewById(R.id.tvNev);
             tvPhoneNumber = (TextView) itemLayoutView.findViewById(R.id.tvNumber);
             itemLayoutView.setClickable(true);
+
+        }
+
+        @Override
+        public void onClick(View v) {
 
         }
     }

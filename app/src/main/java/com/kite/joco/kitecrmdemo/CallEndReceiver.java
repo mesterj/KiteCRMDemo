@@ -61,7 +61,7 @@ public class CallEndReceiver extends BroadcastReceiver {
                 Intent newContactIntent = new Intent(context, NewContactActivity.class);
                 newContactIntent.putExtra("Number", callerNumber);
                 newContactIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(newContactIntent);
+                //context.startActivity(newContactIntent);
             }
 
             // Toast.makeText(context, "A hívott szám : " + calledNumber, Toast.LENGTH_LONG).show();
