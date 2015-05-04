@@ -24,15 +24,13 @@ public class CallEndReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-
-
         Bundle bundle = intent.getExtras();
 
         Set<String> keys = bundle.keySet();
         final String TAG = "KITECRMDEMO";
         final String sharedprefile = "CALLLOGPREF";
 
-        SharedPreferences callinglogpref = context.getSharedPreferences(sharedprefile,Context.MODE_PRIVATE);
+        SharedPreferences callinglogpref = context.getSharedPreferences(sharedprefile, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = callinglogpref.edit();
 
         /*
@@ -44,7 +42,7 @@ public class CallEndReceiver extends BroadcastReceiver {
 
         telephony.listen(myStateListener, PhoneStateListener.LISTEN_CALL_STATE);
 
-        String calledNumber = intent.getStringExtra(Intent.EXTRA_PHONE_NUMBER);
+        //String calledNumber = intent.getStringExtra(Intent.EXTRA_PHONE_NUMBER);
 
         String callerNumber = loadConfig(context);
 
@@ -52,6 +50,8 @@ public class CallEndReceiver extends BroadcastReceiver {
         String stateval = bundle.getString("state");
 
         // A hívás végének figyelése
+        // ha a hívás befejeződik és még nem volt ilyen számmal senki a telefonkönyvben akkor először az új kapcsolat felvitléhez való képernyő indul el, benne a telefonszámmal.
+
         if (stateval != null && stateval.equals("IDLE")) {
             Log.i(TAG, "CALL ENDED");
             Log.i(TAG, stateval);
@@ -66,6 +66,7 @@ public class CallEndReceiver extends BroadcastReceiver {
 
             // Toast.makeText(context, "A hívott szám : " + calledNumber, Toast.LENGTH_LONG).show();
             // intent for create new memo
+            // Ez a rész akkor kell ha minket hívnak.
         } else if (stateval != null && stateval.equals("RINGING")) {
             Log.i(TAG, "CALL_STARTED");
             Log.i(TAG, stateval);
