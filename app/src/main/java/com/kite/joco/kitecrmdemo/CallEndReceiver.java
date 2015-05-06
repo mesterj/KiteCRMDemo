@@ -21,16 +21,18 @@ import java.util.Set;
  */
 public class CallEndReceiver extends BroadcastReceiver {
     String filename = "CallerNum";
+    SharedPreferences callinglogpref;
+    final String sharedprefile = "CALLLOGPREF";
+    final String TAG = "KITECRMDEMO";
+
     @Override
     public void onReceive(Context context, Intent intent) {
 
         Bundle bundle = intent.getExtras();
 
         Set<String> keys = bundle.keySet();
-        final String TAG = "KITECRMDEMO";
-        final String sharedprefile = "CALLLOGPREF";
 
-        SharedPreferences callinglogpref = context.getSharedPreferences(sharedprefile, Context.MODE_PRIVATE);
+        callinglogpref = context.getSharedPreferences(sharedprefile, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = callinglogpref.edit();
 
         /*
@@ -61,31 +63,36 @@ public class CallEndReceiver extends BroadcastReceiver {
                 Intent newContactIntent = new Intent(context, NewContactActivity.class);
                 newContactIntent.putExtra("Number", callerNumber);
                 newContactIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                //context.startActivity(newContactIntent);
+                editor.remove("CALLER_NUMBER");
+                editor.commit();
+                context.startActivity(newContactIntent);
             }
 
             // Toast.makeText(context, "A hívott szám : " + calledNumber, Toast.LENGTH_LONG).show();
             // intent for create new memo
             // Ez a rész akkor kell ha minket hívnak.
         } else if (stateval != null && stateval.equals("RINGING")) {
-            Log.i(TAG, "CALL_STARTED");
+            Log.i(TAG, " CALL_STARTED");
             Log.i(TAG, stateval);
-            Log.i(TAG + " incoming number : ", bundle.getString("incoming_number"));
+            Log.i(TAG, " incoming number : "+ bundle.getString("incoming_number"));
             //Toast.makeText(context, " A hívó száma: " + bundle.getString("incoming_number"), Toast.LENGTH_LONG).show();
 
             //SHaredPref rész
             editor.putString("CALLER_NUMBER",bundle.getString("incoming_number"));
             editor.commit();
 
+            // SharedPref kiírás
+            editor.putString("CALLER_NUMBER",bundle.getString("incoming_number"));
+
             // Filés rész
-            FileOutputStream outputStream;
+            /*FileOutputStream outputStream;
             try {
                 outputStream = context.openFileOutput(filename, Context.MODE_PRIVATE);
                 outputStream.write(bundle.getString("incoming_number").getBytes());
                 outputStream.close();
             } catch (Exception e) {
                 e.printStackTrace();
-            }
+            }*/
         } else {
             Log.i(TAG, "Nem tudom ilyenkor mi van");
         }
@@ -93,7 +100,14 @@ public class CallEndReceiver extends BroadcastReceiver {
     }
 
     private String loadConfig(Context context) {
-        try {
+        // Sharedpref-fel
+
+        String callernum = callinglogpref.getString("CALLER_NUMBER","");
+        return callernum;
+
+
+        // Filéből így volt
+        /*try {
             InputStream in = context.openFileInput(filename);
             if (in != null) {
                 InputStreamReader tmp = new InputStreamReader(in);
@@ -108,7 +122,7 @@ public class CallEndReceiver extends BroadcastReceiver {
             }
         } catch (IOException iex) {
             return null;
-        }
-        return null;
+        }*/
+        //return null;
     }
 }
