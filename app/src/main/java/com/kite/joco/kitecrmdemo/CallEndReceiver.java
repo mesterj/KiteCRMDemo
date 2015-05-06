@@ -46,8 +46,8 @@ public class CallEndReceiver extends BroadcastReceiver {
 
         //String calledNumber = intent.getStringExtra(Intent.EXTRA_PHONE_NUMBER);
 
-        String callerNumber = loadConfig(context);
-
+        String callerNumber = loadConfig(context, "CALLER_NUMBER");
+        String calledNumber = loadConfig(context, "CALLED_NUMBER");
 
         String stateval = bundle.getString("state");
 
@@ -59,6 +59,7 @@ public class CallEndReceiver extends BroadcastReceiver {
             Log.i(TAG, stateval);
             Log.i(TAG, "Most kellene hívni az activityt!");
             Log.i(TAG, "callerNumber value is " + callerNumber);
+            Log.i(TAG, " called number value is_: " + calledNumber);
             if (!callerNumber.equals("")) {
                 Intent newContactIntent = new Intent(context, NewContactActivity.class);
                 newContactIntent.putExtra("Number", callerNumber);
@@ -67,24 +68,37 @@ public class CallEndReceiver extends BroadcastReceiver {
                 editor.commit();
                 context.startActivity(newContactIntent);
             }
+            if (!calledNumber.equals("")) {
+                Intent newContIntent1 = new Intent(context, NewContactActivity.class);
+                newContIntent1.putExtra("Number", calledNumber);
+                newContIntent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                editor.remove("CALLED_NUMBER");
+                editor.commit();
+                context.startActivity(newContIntent1);
+            }
+        }
 
-            // Toast.makeText(context, "A hívott szám : " + calledNumber, Toast.LENGTH_LONG).show();
-            // intent for create new memo
-            // Ez a rész akkor kell ha minket hívnak.
-        } else if (stateval != null && stateval.equals("RINGING")) {
-            Log.i(TAG, " CALL_STARTED");
-            Log.i(TAG, stateval);
-            Log.i(TAG, " incoming number : "+ bundle.getString("incoming_number"));
-            //Toast.makeText(context, " A hívó száma: " + bundle.getString("incoming_number"), Toast.LENGTH_LONG).show();
+        // Toast.makeText(context, "A hívott szám : " + calledNumber, Toast.LENGTH_LONG).show();
+        // intent for create new memo
+        // Ez a rész akkor kell ha minket hívnak.
 
-            //SHaredPref rész
-            editor.putString("CALLER_NUMBER",bundle.getString("incoming_number"));
-            editor.commit();
 
-            // SharedPref kiírás
-            editor.putString("CALLER_NUMBER",bundle.getString("incoming_number"));
+    else if(stateval!=null&&stateval.equals("RINGING"))
 
-            // Filés rész
+    {
+        Log.i(TAG, " CALL_STARTED");
+        Log.i(TAG, stateval);
+        Log.i(TAG, " incoming number : " + bundle.getString("incoming_number"));
+        //Toast.makeText(context, " A hívó száma: " + bundle.getString("incoming_number"), Toast.LENGTH_LONG).show();
+
+        //SHaredPref rész
+        editor.putString("CALLER_NUMBER", bundle.getString("incoming_number"));
+        editor.commit();
+
+        // SharedPref kiírás
+        editor.putString("CALLER_NUMBER", bundle.getString("incoming_number"));
+
+        // Filés rész
             /*FileOutputStream outputStream;
             try {
                 outputStream = context.openFileOutput(filename, Context.MODE_PRIVATE);
@@ -93,16 +107,21 @@ public class CallEndReceiver extends BroadcastReceiver {
             } catch (Exception e) {
                 e.printStackTrace();
             }*/
-        } else {
-            Log.i(TAG, "Nem tudom ilyenkor mi van");
-        }
-
     }
 
-    private String loadConfig(Context context) {
+    else
+
+    {
+        Log.i(TAG, "Nem tudom ilyenkor mi van");
+    }
+
+}
+
+    private String loadConfig(Context context, String Key) {
         // Sharedpref-fel
 
-        String callernum = callinglogpref.getString("CALLER_NUMBER","");
+
+        String callernum = callinglogpref.getString(Key, "");
         return callernum;
 
 

@@ -2,6 +2,7 @@ package com.kite.joco.kitecrmdemo;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Switch;
@@ -56,18 +57,20 @@ public class NewContactActivity extends ActionBarActivity {
         Partner p = new Partner();
         if (callernumber.matches("^[+]36[237]0\\d*")){
             if (swMaganCeges.isChecked()) {
-                p.setMaganMobilTelefonszam(callernumber);
+                Log.i(TAG,"Ez a céges");
+                p.setCegMobilTelefonszam(callernumber);
             }
             else {
-                p.setCegMobilTelefonszam(callernumber);
+                Log.i(TAG,"Ez a magán");
+                p.setMaganMobilTelefonszam(callernumber);
             }
         }
         else {
             if (swMaganCeges.isChecked()) {
-                p.setMaganVezetekesTelefonszam(callernumber);
+                p.setCegVezetekesTelefonszam(callernumber);
             }
             else {
-                p.setCegVezetekesTelefonszam(callernumber);
+                p.setMaganVezetekesTelefonszam(callernumber);
             }
         }
         p.setKapcsolatnev(etVezeteknev.getText()+" "+etKeresztnev.getText() );

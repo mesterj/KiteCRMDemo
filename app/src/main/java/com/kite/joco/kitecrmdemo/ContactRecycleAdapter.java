@@ -1,6 +1,8 @@
 package com.kite.joco.kitecrmdemo;
 
+import android.nfc.Tag;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,7 @@ import java.util.List;
 public class ContactRecycleAdapter extends RecyclerView.Adapter<ContactRecycleAdapter.ContactViewHolder>  {
 
     List<Partner> mDataset;
+    public static final String TAG = "KITECRMDEMO";
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public ContactRecycleAdapter(List<Partner> myDataset) {
@@ -72,8 +75,16 @@ public class ContactRecycleAdapter extends RecyclerView.Adapter<ContactRecycleAd
         @Override
         public void onClick(View v) {
             long pos = getAdapterPosition();
-            Partner partneradat = Partner.findById(Partner.class,pos);
-            String telszam = partneradat.getCegMobilTelefonszam();
+            Partner partneradat = Partner.findById(Partner.class, pos);
+            String telszam ="Nincs céges mobil szám";
+            try {
+                if (partneradat.getCegMobilTelefonszam() != null) {
+                    telszam = partneradat.getCegMobilTelefonszam();
+                }
+            } catch (NullPointerException nex){
+                Log.i(TAG,"Nincs céges mobil szám");
+            }
+
 
             Toast.makeText(v.getContext(),telszam,Toast.LENGTH_SHORT).show();
         }

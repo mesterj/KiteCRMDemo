@@ -3,6 +3,7 @@ package com.kite.joco.kitecrmdemo;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 /**
@@ -11,11 +12,17 @@ import android.util.Log;
 public class OutgoingCallReceiver extends BroadcastReceiver {
 
     private static final String TAG="KITECRMDEMO";
+    final String sharedprefile = "CALLLOGPREF";
 
     @Override
         public void onReceive(Context context, Intent intent) {
         String phoneNumber = intent.getStringExtra(Intent.EXTRA_PHONE_NUMBER);
         Log.i(TAG, phoneNumber);
+        SharedPreferences calllogprefs = context.getSharedPreferences(sharedprefile,Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = calllogprefs.edit();
+        editor.putString("CALLED_NUMBER",phoneNumber);
+        editor.commit();
+
         //Toast.makeText(context, "Outgoing call catched!: " + phoneNumber, Toast.LENGTH_LONG).show();
 
         // El kell menteni az app saját sharedpreferences filéjébe. Ha már van ilyen érték benn azt ki kell törölni, vagy törljem az egész sharedprefs-t?
